@@ -28,7 +28,7 @@
 
 - Teste utilizando o browser
 
-  - http:localhost:3333
+  - http://localhost:3333
 
 - Insomnia
   ### **_Você pode simular as chamadas para api utilizando o app insomnia e importando as rotas da pasta [INSOMNIA]_**
