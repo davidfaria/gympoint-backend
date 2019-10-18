@@ -5,6 +5,7 @@ class Student extends Model {
     super.init(
       {
         name: Sequelize.STRING,
+        email: Sequelize.STRING,
         age: Sequelize.INTEGER,
         weight: Sequelize.DECIMAL(10, 2),
         feet_tall: Sequelize.DECIMAL(10, 2),
@@ -15,6 +16,10 @@ class Student extends Model {
     );
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
   }
 }
 

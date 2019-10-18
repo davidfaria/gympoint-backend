@@ -5,6 +5,9 @@ class StudentController {
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
+      email: Yup.string()
+        .email()
+        .required(),
       age: Yup.number().required(),
       weight: Yup.number().required(),
       feet_tall: Yup.number().required(),
@@ -15,7 +18,7 @@ class StudentController {
 
     const student = await Student.create(req.body);
 
-    return res.json(student);
+    return res.status(201).json(student);
   }
 
   async update(req, res) {
@@ -24,6 +27,7 @@ class StudentController {
     const schema = Yup.object().shape({
       id: Yup.number().required(),
       name: Yup.string(),
+      email: Yup.string().email(),
       age: Yup.number(),
       weight: Yup.number(),
       feet_tall: Yup.number(),
