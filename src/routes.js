@@ -42,6 +42,7 @@ routes.post('/sessions', SessionController.store);
 // Routes below is JWT AUTH required
 routes.use(authMiddleware);
 
+routes.get('/students', StudentController.index);
 routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
 routes.post(
