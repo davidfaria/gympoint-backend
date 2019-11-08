@@ -4,17 +4,59 @@ import Student from '../models/Student';
 
 class StudentController {
   async index(req, res) {
-    const search = req.query.name || '';
+    const name = req.query.name || '';
+    const page = parseInt(req.query.page || 1, 10);
+    const perPage = parseInt(req.query.perPage || 5, 10);
 
-    const students = await Student.findAll({
+    // const count = await Student.count({
+    //   order: ['name'],
+    //   where: {
+    //     name: {
+    //       [Op.iLike]: `%${name}%`,
+    //     },
+    //   },
+    // });
+
+    // const students = await Student.findAll({
+    //   order: ['name'],
+    //   where: {
+    //     name: {
+    //       [Op.iLike]: `%${name}%`,
+    //     },
+    //   },
+    //   limit: perPage,
+    //   offset: (page - 1) * perPage,
+    // });
+
+    const students = await Student.findAndCountAll({
+      order: ['name'],
       where: {
         name: {
-          [Op.iLike]: `%${search}%`,
+          [Op.iLike]: `%${name}%`,
         },
       },
+      limit: perPage,
+      offset: (page - 1) * perPage,
     });
 
-    return res.json(students);
+    const totalPage = Math.ceil(students.count / perPage);
+
+    return res.json({
+      page,
+      perPage,
+      data: students.rows,
+      total: students.count,
+      totalPage,
+    });
+  }
+
+  async show(req, res) {
+    const { id } = req.params;
+    const student = await Student.findByPk(id);
+
+    if (!student) return res.status(404).json({ error: 'Student Not Found' });
+
+    return res.json(student);
   }
 
   async store(req, res) {
@@ -57,6 +99,18 @@ class StudentController {
     await student.update(req.body);
 
     return res.json(student);
+  }
+
+  async destroy(req, res) {
+    const { id } = req.params;
+    const student = await Student.findByPk(id);
+
+    if (!student) return res.status(404).json({ error: 'Student Not Found' });
+
+    await student.destroy();
+    return res.json({
+      message: 'Student removed',
+    });
   }
 }
 

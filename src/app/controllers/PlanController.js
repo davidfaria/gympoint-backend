@@ -1,9 +1,55 @@
 import Plan from '../models/Plan';
+import { Op } from 'sequelize';
 
 class PlanController {
   async index(req, res) {
-    const plans = await Plan.findAll();
-    return res.json(plans);
+    const title = req.query.title || '';
+    const page = parseInt(req.query.page || 1, 10);
+    const perPage = parseInt(req.query.perPage || 5, 10);
+
+    // const plans = await Plan.findAll();
+    // return res.json(plans);
+
+    // const count = await Plan.count({
+    //   order: ['title'],
+    //   where: {
+    //     title: {
+    //       [Op.iLike]: `%${title}%`,
+    //     },
+    //   },
+    // });
+
+    // const plans = await Plan.findAll({
+    //   order: ['title'],
+    //   where: {
+    //     title: {
+    //       [Op.iLike]: `%${title}%`,
+    //     },
+    //   },
+    //   limit: perPage,
+    //   offset: (page - 1) * perPage,
+    // });
+
+    const plans = await Plan.findAndCountAll({
+      order: ['title'],
+      where: {
+        title: {
+          [Op.iLike]: `%${title}%`,
+        },
+      },
+      limit: perPage,
+      offset: (page - 1) * perPage,
+    });
+
+    const totalPage = Math.ceil(plans.count / perPage);
+
+    return res.json({
+      page,
+      perPage,
+      data: plans.rows,
+      total: plans.count,
+      totalPage,
+    });
   }
 
   async store(req, res) {
