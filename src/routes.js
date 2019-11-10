@@ -72,6 +72,7 @@ routes.post(
 );
 
 routes.get('/plans', PlanController.index);
+routes.get('/plans/:id', PlanController.show);
 routes.post('/plans', PlanCreateValidator, PlanController.store);
 routes.put(
   '/plans/:id',
@@ -82,6 +83,7 @@ routes.put(
 routes.delete('/plans/:id', pkValidator, PlanController.delete);
 
 routes.get('/enrollments', EnrollmentController.index);
+routes.get('/enrollments/:id', EnrollmentController.show);
 routes.post(
   '/enrollments',
   EnrollmentCreateValidator,
