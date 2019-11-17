@@ -18,6 +18,7 @@ import AnswerValidator from './app/validators/AnswerValidator';
 
 // Controllers
 import SessionController from './app/controllers/SessionController';
+import SessionStudentController from './app/controllers/SessionStudentController';
 import FileController from './app/controllers/FileController';
 import StudentController from './app/controllers/StudentController';
 import CheckinController from './app/controllers/CheckinController';
@@ -38,6 +39,10 @@ routes.get('/', async (req, res) => {
 });
 
 routes.post('/sessions', SessionController.store);
+routes.post('/sessionsStudent', SessionStudentController.store);
+
+routes.get('/students/:id/checkins', pkValidator, CheckinController.index);
+routes.post('/students/:id/checkins', pkValidator, CheckinController.store);
 
 // Routes below is JWT AUTH required
 routes.use(authMiddleware);
@@ -53,8 +58,6 @@ routes.post(
   upload.single('file'),
   FileController.store
 );
-routes.get('/students/:id/checkins', pkValidator, CheckinController.index);
-routes.post('/students/:id/checkins', pkValidator, CheckinController.store);
 
 routes.get('/students/:id/help-orders', pkValidator, HelpOrderController.index);
 routes.post(

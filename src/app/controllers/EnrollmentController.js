@@ -11,23 +11,6 @@ class EnrollmentController {
     // const term = req.query.term || '';
     const page = parseInt(req.query.page || 1, 10);
     const perPage = parseInt(req.query.perPage || 5, 10);
-
-    // const enrollments = await Enrollment.findAll({
-    //   include: [
-    //     {
-    //       model: Student,
-    //       as: 'student',
-    //       attributes: ['id', 'name'],
-    //     },
-    //     {
-    //       model: Plan,
-    //       as: 'plan',
-    //       attributes: ['id', 'title', 'total'],
-    //     },
-    //   ],
-    // });
-    // return res.json(enrollments);
-
     const enrollments = await Enrollment.findAndCountAll({
       order: ['id'],
       // where: {
@@ -80,7 +63,25 @@ class EnrollmentController {
 
   async show(req, res) {
     const { id } = req.params;
-    const enrollment = await Enrollment.findByPk(id);
+    // const enrollment = await Enrollment.findByPk(id);
+
+    const enrollment = await Enrollment.findOne({
+      where: {
+        id,
+      },
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['id', 'name'],
+        },
+        {
+          model: Plan,
+          as: 'plan',
+          attributes: ['id', 'title', 'duration', 'price', 'total'],
+        },
+      ],
+    });
 
     if (!enrollment)
       return res.status(404).json({ error: 'Enrollment Not Found' });
