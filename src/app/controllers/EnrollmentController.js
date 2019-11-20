@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import { addMonths, parseISO } from 'date-fns';
 import Queue from '../../lib/Queue';
 import EnrollmentMail from '../jobs/EnrollmentMail';
@@ -8,40 +9,35 @@ import Student from '../models/Student';
 
 class EnrollmentController {
   async index(req, res) {
-    // const term = req.query.term || '';
+    const term = req.query.term || '';
     const page = parseInt(req.query.page || 1, 10);
     const perPage = parseInt(req.query.perPage || 5, 10);
     const enrollments = await Enrollment.findAndCountAll({
       order: ['id'],
-      // where: {
-      //   // name: {
-      //   //   [Op.iLike]: `%${name}%`,
-      //   // },
-      //   // $or: [
-      //   //   { '$Student.name$': term },
-      //   //   // {'$Plan.userId$' : 100}
-      //   // ],
-      // },
+      where: {
+        [Op.or]: [
+          {
+            '$student.name$': {
+              [Op.iLike]: `%${term}%`,
+            },
+          },
+          {
+            '$plan.title$': {
+              [Op.iLike]: `%${term}%`,
+            },
+          },
+        ],
+      },
       include: [
         {
           model: Student,
           as: 'student',
-          // where: {
-          //   name: {
-          //     [Op.iLike]: `%${term}%`,
-          //   },
-          // },
           attributes: ['id', 'name'],
         },
         {
           model: Plan,
           as: 'plan',
           attributes: ['id', 'title', 'duration', 'price', 'total'],
-          // where: {
-          //   title: {
-          //     [Op.iLike]: `%${term}%`,
-          //   },
-          // },
         },
       ],
       limit: perPage,

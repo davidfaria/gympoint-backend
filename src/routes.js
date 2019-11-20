@@ -43,6 +43,13 @@ routes.post('/sessionsStudent', SessionStudentController.store);
 
 routes.get('/students/:id/checkins', pkValidator, CheckinController.index);
 routes.post('/students/:id/checkins', pkValidator, CheckinController.store);
+routes.get('/students/:id/help-orders', pkValidator, HelpOrderController.index);
+routes.post(
+  '/students/:id/help-orders',
+  pkValidator,
+  HelpOrderCreateValidator,
+  HelpOrderController.store
+);
 
 // Routes below is JWT AUTH required
 routes.use(authMiddleware);
@@ -59,13 +66,6 @@ routes.post(
   FileController.store
 );
 
-routes.get('/students/:id/help-orders', pkValidator, HelpOrderController.index);
-routes.post(
-  '/students/:id/help-orders',
-  pkValidator,
-  HelpOrderCreateValidator,
-  HelpOrderController.store
-);
 routes.get('/help-orders', AnswerController.index);
 routes.post(
   '/help-orders/:id/answer',
