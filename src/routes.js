@@ -35,6 +35,7 @@ routes.get('/', async (req, res) => {
   res.json({
     name: 'Api Gympoint',
     version: '1.0.0',
+    mode: process.env.NODE_ENV,
   });
 });
 
