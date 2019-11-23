@@ -8,26 +8,6 @@ class StudentController {
     const page = parseInt(req.query.page || 1, 10);
     const perPage = parseInt(req.query.perPage || 5, 10);
 
-    // const count = await Student.count({
-    //   order: ['name'],
-    //   where: {
-    //     name: {
-    //       [Op.iLike]: `%${name}%`,
-    //     },
-    //   },
-    // });
-
-    // const students = await Student.findAll({
-    //   order: ['name'],
-    //   where: {
-    //     name: {
-    //       [Op.iLike]: `%${name}%`,
-    //     },
-    //   },
-    //   limit: perPage,
-    //   offset: (page - 1) * perPage,
-    // });
-
     const students = await Student.findAndCountAll({
       order: ['name'],
       where: {

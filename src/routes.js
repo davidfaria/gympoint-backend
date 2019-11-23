@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import Brute from 'express-brute';
+import BruteRedis from 'express-brute-redis';
 import multer from 'multer';
 
 // Configs
@@ -39,7 +41,28 @@ routes.get('/', async (req, res) => {
   });
 });
 
-routes.post('/sessions', SessionController.store);
+if (process.env.NODE_ENV === 'production') {
+  const bruteStore = new BruteRedis({
+    host: process.env.HOST,
+    port: process.env.PORT,
+  });
+
+  const bruteForce = new Brute(bruteStore);
+
+  routes.get('/', async (req, res) => {
+    res.json({
+      name: 'Api',
+      version: '1.0.0',
+      mode: process.env.NODE_ENV,
+    });
+  });
+  routes.post('/sessions', bruteForce.prevent, SessionController.store);
+} else {
+  routes.post('/sessions', SessionController.store);
+}
+
+// routes.post('/sessions', SessionController.store);
+
 routes.post('/sessionsStudent', SessionStudentController.store);
 
 routes.get('/students/:id/checkins', pkValidator, CheckinController.index);
