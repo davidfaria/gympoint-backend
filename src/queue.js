@@ -1,4 +1,5 @@
-import 'dotenv/config';
+// import 'dotenv/config';
+import './bootstrap';
 import Queue from './lib/Queue';
 
 Queue.processQueue();

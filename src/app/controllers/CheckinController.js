@@ -32,8 +32,6 @@ class CheckinController {
       .gte('createdAt', start_date)
       .lte('createdAt', end_date);
 
-    // return res.json({ start_date, end_date, checkinsCounter });
-
     if (checkinsCounter >= 5)
       return res.status(400).json({
         error: 'You have reached the maximum check in limit of the week',

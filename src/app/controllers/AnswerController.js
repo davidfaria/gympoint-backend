@@ -6,19 +6,7 @@ import AnswerHelpOrderMail from '../jobs/AnswerHelpOrderMail';
 class AnswerController {
   async index(req, res) {
     const { page = 1, perPage = 10 } = req.query;
-    // const helporders = await HelpOrder.findAll({
-    //   where: { answer_at: null },
-    //   order: ['createdAt'],
-    //   limit: 20,
-    //   offset: (page - 1) * 20,
-    //   include: [
-    //     {
-    //       model: Student,
-    //       as: 'student',
-    //       attributes: ['id', 'name', 'email'],
-    //     },
-    //   ],
-    // });
+
     const helporders = await HelpOrder.findAndCountAll({
       where: { answer_at: null },
       order: ['createdAt'],
@@ -32,17 +20,6 @@ class AnswerController {
         },
       ],
     });
-
-    // const plans = await Plan.findAndCountAll({
-    //   order: ['title'],
-    //   where: {
-    //     title: {
-    //       [Op.iLike]: `%${title}%`,
-    //     },
-    //   },
-    //   limit: perPage,
-    //   offset: (page - 1) * perPage,
-    // });
 
     const totalPage = Math.ceil(helporders.count / perPage);
 

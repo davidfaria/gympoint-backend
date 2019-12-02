@@ -92,29 +92,11 @@ class EnrollmentController {
 
     const end_date = addMonths(parseISO(req.body.start_date), plan.duration);
 
-    const enrollmentCreated = await Enrollment.create(
-      {
-        ...req.body,
-        end_date,
-        price: plan.total,
-      }
-
-      // TODO - Study documentation https://sequelize.org/master/manual/associations.html#creating-with-associations
-      // {
-      //   include: [
-      //     {
-      //       model: Student,
-      //       as: 'student',
-      //       attributes: ['id', 'name'],
-      //     },
-      //     {
-      //       model: Plan,
-      //       as: 'plan',
-      //       attributes: ['id', 'title', 'total'],
-      //     },
-      //   ],
-      // }
-    );
+    const enrollmentCreated = await Enrollment.create({
+      ...req.body,
+      end_date,
+      price: plan.total,
+    });
 
     const enrollment = await enrollmentCreated.reload({
       include: [

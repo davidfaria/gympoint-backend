@@ -5,7 +5,6 @@ import helmet from 'helmet';
 import redis from 'redis';
 import RateLimit from 'express-rate-limit';
 import RateLimitRedis from 'rate-limit-redis';
-
 import Youch from 'youch';
 
 import path from 'path';

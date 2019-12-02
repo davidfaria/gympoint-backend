@@ -7,29 +7,6 @@ class PlanController {
     const page = parseInt(req.query.page || 1, 10);
     const perPage = parseInt(req.query.perPage || 5, 10);
 
-    // const plans = await Plan.findAll();
-    // return res.json(plans);
-
-    // const count = await Plan.count({
-    //   order: ['title'],
-    //   where: {
-    //     title: {
-    //       [Op.iLike]: `%${title}%`,
-    //     },
-    //   },
-    // });
-
-    // const plans = await Plan.findAll({
-    //   order: ['title'],
-    //   where: {
-    //     title: {
-    //       [Op.iLike]: `%${title}%`,
-    //     },
-    //   },
-    //   limit: perPage,
-    //   offset: (page - 1) * perPage,
-    // });
-
     const plans = await Plan.findAndCountAll({
       order: ['title'],
       where: {
