@@ -5,7 +5,10 @@ import AnswerHelpOrderMail from '../jobs/AnswerHelpOrderMail';
 
 class AnswerController {
   async index(req, res) {
-    const { page = 1, perPage = 10 } = req.query;
+    // const { page = 1, perPage = 10 } = req.query;
+
+    const page = parseInt(req.query.page || 1, 10);
+    const perPage = parseInt(req.query.perPage || 5, 10);
 
     const helporders = await HelpOrder.findAndCountAll({
       where: { answer_at: null },
