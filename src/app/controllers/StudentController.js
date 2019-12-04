@@ -62,9 +62,7 @@ class StudentController {
     if (!student) return res.status(404).json({ error: 'Student Not Found' });
 
     await student.destroy();
-    return res.json({
-      message: 'Student removed',
-    });
+    return res.status(204).send();
   }
 }
 

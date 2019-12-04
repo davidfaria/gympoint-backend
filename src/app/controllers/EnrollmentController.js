@@ -144,7 +144,7 @@ class EnrollmentController {
       return res.status(400).json({ error: 'Enrollment not found' });
 
     await enrollment.destroy();
-    return res.json({ message: 'Enrollment successfully removed' });
+    return res.status(204).send();
   }
 }
 

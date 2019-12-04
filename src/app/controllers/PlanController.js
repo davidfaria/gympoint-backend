@@ -59,7 +59,7 @@ class PlanController {
     if (!plan) return res.status(400).json({ error: 'Plan not found' });
 
     await plan.destroy();
-    return res.json({ message: 'Plan successfully removed' });
+    return res.status(204).send();
   }
 }
 
