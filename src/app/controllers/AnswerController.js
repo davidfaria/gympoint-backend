@@ -65,7 +65,7 @@ class AnswerController {
      *  Notify user at mobile
      */
 
-    console.log(req.conectedStudents);
+    // console.log(req.conectedStudents);
 
     const ownerSocket = req.conectedStudents[helpOrder.student_id];
     if (ownerSocket) {

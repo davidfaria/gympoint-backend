@@ -31,6 +31,7 @@ import CheckinController from './app/controllers/CheckinController';
 import PlanController from './app/controllers/PlanController';
 import EnrollmentController from './app/controllers/EnrollmentController';
 import HelpOrderController from './app/controllers/HelpOrderController';
+import NotificationController from './app/controllers/NotificationController';
 import AnswerController from './app/controllers/AnswerController';
 
 // Variables
@@ -107,6 +108,9 @@ routes.post(
   AnswerValidator,
   AnswerController.store
 );
+
+// Notifications
+routes.get('/notifications', NotificationController.index);
 
 // Routes Plan
 routes.get('/plans', PlanController.index);

@@ -42,10 +42,25 @@ class HelpOrderController {
     if (!studentExists)
       return res.status(400).json({ error: 'Student not found' });
 
-    const helpOrder = await HelpOrder.create({
+    const helpOrderCreated = await HelpOrder.create({
       ...req.body,
       student_id: req.params.id,
     });
+
+    const helpOrder = await helpOrderCreated.reload({
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['id', 'name'],
+        },
+      ],
+    });
+
+    /**
+     *  Notify user admin
+     */
+    req.io.emit('HELP_ORDER_CREATE_NOTIFICATION', helpOrder);
 
     return res.status(201).json(helpOrder);
   }
