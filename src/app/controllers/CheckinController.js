@@ -6,7 +6,9 @@ class CheckinController {
     // TODO check if must be search students exists in database ?
     const checkins = await Checkin.find({
       student_id: req.params.id,
-    });
+    })
+      // .sort({ createdAt: 'desc' })
+      .limit(5);
     return res.json(checkins);
   }
 

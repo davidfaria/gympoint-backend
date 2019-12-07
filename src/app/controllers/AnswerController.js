@@ -45,6 +45,7 @@ class AnswerController {
     await helpOrderUpdated.save();
 
     const helpOrder = await helpOrderUpdated.reload({
+      // order: ['createdAt', 'desc'],
       include: [
         {
           model: Student,
@@ -59,6 +60,17 @@ class AnswerController {
      */
 
     await Queue.add(AnswerHelpOrderMail.key, { helpOrder });
+
+    /**
+     *  Notify user at mobile
+     */
+
+    console.log(req.conectedStudents);
+
+    const ownerSocket = req.conectedStudents[helpOrder.student_id];
+    if (ownerSocket) {
+      req.io.to(ownerSocket).emit('ANSWER_NOTIFICATION', helpOrder);
+    }
 
     return res.status(201).json(helpOrder);
   }
