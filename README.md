@@ -1,36 +1,80 @@
-# Api Projeto Gympoint
+# Api Gympoint
 
 ## Backend NodeJS desenvolvido no treinamento GoStack Bootcamp [Rocketseat](https://rocketseat.com.br)
 
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/davidfaria/bootcamp-gostack-gympoint/master/img-readme/logo.png">
+<img src="https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/logo.png">
 </h1>
 
 ## Como utilizar
 
-- Clone o repositório:
+- Download / Clone o repositório:
 
-  `git clone https://github.com/davidfaria/bootcamp-gostack-gympoint.git`
+  ```
+  git clone https://github.com/davidfaria/gympoint-backend.git
+  ```
 
-- Instale as dependências:
+- Instalando as dependências do package.json:
 
-  `yarn install`
+  ```
+  yarn install
+  ```
 
-- Inicialize o banco de dados postgres com docker:
+- Configurar as variáveis de ambiente
 
-  ### **_Obs. User and Password para acessar o dadtabase postgres, veja o arquivo: docker-compose.yml_**
+```
+cp .env.example .env
+```
 
-  `docker-compose up -d`
+- Inicialize os banco de dados (postgres e mongodb) com docker:
 
-- Inicialize a api
+  **_Dependência (docker e docker-compose): você pode instalar no linux (ubuntu/linux_mint)_**
 
-  `yarn dev`
+  ```
+    sudo apt install docker docker-compose
+  ```
 
-- Teste utilizando o browser
+  **_Obs. User and Password para acessar os databases, veja o arquivo: docker-compose.yml_**
 
-  - http://localhost:3333
+  ```
+  docker-compose up -d
+  ```
 
-- Insomnia
+- Rode as Migrations e Seeds para criar e popular o banco de dados
+
+  ```
+    yarn sequelize db:migrate
+    yarn sequelize db:seed:all
+  ```
+
+* Inicialize a api
+
+  ```
+  yarn dev
+  ```
+
+* Teste utilizando o browser.
+
+  **_Obs. Usei a porta: 4444 no meu arquivo .env_**
+
+  ```
+  http://localhost:4444
+  ```
+
+![localhost](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/localhost.png)
+
+- Testar endpoint com insomnia
+
   ### **_Você pode simular as chamadas para api utilizando o app insomnia e importando as rotas da pasta [INSOMNIA]_**
 
-![Insomnia](https://raw.githubusercontent.com/davidfaria/bootcamp-gostack-gympoint/master/img-readme/insomnia.png)
+![Insomnia](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/insomnia.png)
+
+## Bônus
+
+- Iniciando Testes com Jest
+
+  ```
+    yarn test
+  ```
+
+![Testes](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/teste.png)
