@@ -22,19 +22,17 @@
 
 - Configurar as variáveis de ambiente
 
-```
-cp .env.example .env
-```
+  ```
+  cp .env.example .env
+  ```
 
 - Inicialize os banco de dados (postgres e mongodb) com docker:
 
   **_Dependência (docker e docker-compose): você pode instalar no linux (ubuntu/linux_mint)_**
 
   ```
-    sudo apt install docker docker-compose
+  sudo apt install docker docker-compose
   ```
-
-  **_Obs. User and Password para acessar os databases, veja o arquivo: docker-compose.yml_**
 
   ```
   docker-compose up -d
@@ -57,9 +55,7 @@ cp .env.example .env
 
   **_Obs. Usei a porta: 4444 no meu arquivo .env_**
 
-  ```
   http://localhost:4444
-  ```
 
 ![localhost](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/localhost.png)
 
