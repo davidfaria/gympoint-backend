@@ -45,13 +45,13 @@
     yarn sequelize db:seed:all
   ```
 
-* Inicialize a api
+- Inicialize a api
 
   ```
   yarn dev
   ```
 
-* Teste utilizando o browser.
+- Teste utilizando o browser.
 
   **_Obs. Usei a porta: 4444 no meu arquivo .env_**
 
