@@ -6,6 +6,11 @@
 <img src="https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/logo.png">
 </h1>
 
+## Pré requesitos
+
+- OS: Windows, Mac ou Linux
+- Softwares: Node , NPM e Yarn, Docker com Docker composer
+
 ## Como utilizar
 
 - Download / Clone o repositório:
@@ -17,7 +22,7 @@
 - Instalando as dependências do package.json:
 
   ```
-  yarn install
+  cd gympoint-backend && yarn install
   ```
 
 - Configurar as variáveis de ambiente
@@ -26,13 +31,7 @@
   cp .env.example .env
   ```
 
-- Inicialize os banco de dados (postgres e mongodb) com docker:
-
-  **_Dependência (docker e docker-compose): você pode instalar no linux (ubuntu/linux_mint)_**
-
-  ```
-  sudo apt install docker docker-compose
-  ```
+- Inicialize os banco de dados (postgres, redis e mongodb)
 
   ```
   docker-compose up -d
