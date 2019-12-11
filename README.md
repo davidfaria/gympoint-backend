@@ -1,8 +1,8 @@
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/logo.png">
+<img src="https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/.github/logo.png">
 </h1>
 <h3 align="center">
-Backend Node.js - GoStack Bootcamp [Rocketseat](https://rocketseat.com.br)
+Back-end Node.js - GoStack Bootcamp [Rocketseat](https://rocketseat.com.br)
 </h3>
 
 <p align = "center">
@@ -21,6 +21,8 @@ Backend Node.js - GoStack Bootcamp [Rocketseat](https://rocketseat.com.br)
 - Postgres [PostgreSQL](https://www.postgresql.org/)
 - Redis [Redis](https://redis.io/)
 - MongoDB [MongoDB](https://www.mongodb.com/)
+- Docker [Docker](https://www.docker.com/)
+- Docker Compose [Docker Compose](https://docs.docker.com/compose/)
 
 ## Instruções Back-end
 
@@ -59,13 +61,13 @@ yarn queue
 
 http://localhost:4444
 
-![localhost](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/localhost.png)
+![localhost](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/.github/localhost.png)
 
 - Testar endpoint com insomnia
 
 ### **_Você pode simular as chamadas para api utilizando o app insomnia e importando as rotas da pasta [.GITHUB/INSOMNIA]_**
 
-![Insomnia](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/insomnia.png)
+![Insomnia](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/.github/insomnia.png)
 
 ## Tests (Jest)
 
@@ -74,4 +76,4 @@ http://localhost:4444
     yarn test
 ```
 
-![Testes](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/teste.png)
+![Testes](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/.github/teste.png)
