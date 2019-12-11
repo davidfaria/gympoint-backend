@@ -13,7 +13,7 @@ Back-end Node.js - GoStack Bootcamp [Rocketseat](https://rocketseat.com.br)
 
 ## :gear: Back-end
 
-## Pré requesitos
+## Pré requisitos
 
 - Git [Git](https://git-scm.com)
 - Node.js [Node.js v10.16](https://nodejs.org/)
@@ -56,3 +56,9 @@ yarn dev
 yarn queue
 
 ```
+
+---
+
+## :memo: Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
