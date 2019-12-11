@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Run queue
 pm2 start --name "gympoint-queue" dist/queue.js
 
