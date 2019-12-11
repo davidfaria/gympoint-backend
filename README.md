@@ -11,6 +11,10 @@
 - OS: Windows, Mac ou Linux
 - Softwares: Node , NPM e Yarn, Docker com Docker composer
 
+## Demonostração
+
+![Demonostracao](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/assets/backend.gif)
+
 ## Como utilizar
 
 - Download / Clone o repositório:
