@@ -48,10 +48,11 @@
     yarn sequelize db:seed:all
   ```
 
-- Inicialize a api
+- Inicialize a api + jobs
 
   ```
   yarn dev
+  yarn queue
   ```
 
 - Teste utilizando o browser.
