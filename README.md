@@ -56,24 +56,3 @@ yarn dev
 yarn queue
 
 ```
-
-- Verificando se a aplicação está funcionando
-
-http://localhost:4444
-
-![localhost](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/.github/localhost.png)
-
-- Testar endpoint com insomnia
-
-### **_Você pode simular as chamadas para api utilizando o app insomnia e importando as rotas da pasta [.GITHUB/INSOMNIA]_**
-
-![Insomnia](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/.github/insomnia.png)
-
-## Tests (Jest)
-
-```bash
-  # run test
-    yarn test
-```
-
-![Testes](https://raw.githubusercontent.com/davidfaria/gympoint-backend/master/.github/teste.png)
