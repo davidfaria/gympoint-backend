@@ -3,13 +3,30 @@ import Checkin from '../schemas/Checkin';
 
 class CheckinController {
   async index(req, res) {
-    // TODO check if must be search students exists in database ?
+    const page = parseInt(req.query.page || 1, 10);
+    const perPage = parseInt(req.query.perPage || 10, 10);
+    const skip = (page - 1) * perPage;
+
+    const total = await Checkin.find({
+      student_id: req.params.id,
+    }).count();
+
     const checkins = await Checkin.find({
       student_id: req.params.id,
     })
-      // .sort({ createdAt: 'desc' })
-      .limit(5);
-    return res.json(checkins);
+      .skip(skip)
+      .limit(perPage)
+      .sort({ createdAt: 'desc' });
+
+    const totalPage = Math.ceil(total / perPage);
+
+    return res.json({
+      page,
+      perPage,
+      data: checkins,
+      total,
+      totalPage,
+    });
   }
 
   async store(req, res) {
