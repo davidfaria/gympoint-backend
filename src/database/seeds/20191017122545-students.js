@@ -4,7 +4,7 @@ module.exports = {
       'students',
       [
         {
-          id: 1,
+          // id: 1,
           email: 'davidfaria89@gmail.com',
           name: 'David Faria',
           age: 30,
@@ -15,7 +15,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 2,
+          // id: 2,
           email: 'jcasilva86@gmail.com',
           name: 'Julio C. Antunes',
           age: 34,
@@ -26,7 +26,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 3,
+          // id: 3,
           email: 'paulomarcelo@gmail.com',
           name: 'Paulo Marcelo',
           age: 35,
@@ -37,7 +37,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 4,
+          // id: 4,
           email: 'welves@gmail.com',
           name: 'Welves Santos',
           age: 29,
@@ -48,7 +48,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 5,
+          // id: 5,
           email: 'fernando@gmail.com',
           name: 'Fernando',
           age: 40,
