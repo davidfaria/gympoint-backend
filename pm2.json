@@ -6,6 +6,13 @@
       "instances": 1,
       "exec_mode": "fork",
       "watch": false
+    },
+    {
+      "name": "gympoint-queue",
+      "script": "dist/queue.js",
+      "instances": 1,
+      "exec_mode": "fork",
+      "watch": false
     }
   ]
 }
