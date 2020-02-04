@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import Brute from 'express-brute';
-import BruteRedis from 'express-brute-redis';
+// import Brute from 'express-brute';
+// import BruteRedis from 'express-brute-redis';
 import multer from 'multer';
 
 // Configs
@@ -47,21 +47,23 @@ routes.get('/', async (req, res) => {
 });
 
 // Apply Brute in production Mode
-if (process.env.NODE_ENV === 'production') {
-  const bruteStore = new BruteRedis({
-    host: process.env.HOST,
-    port: process.env.PORT,
-  });
-  const bruteForce = new Brute(bruteStore);
-  routes.post(
-    '/sessions',
-    bruteForce.prevent,
-    SessionStoreValidator,
-    SessionController.store
-  );
-} else {
-  routes.post('/sessions', SessionStoreValidator, SessionController.store);
-}
+// if (process.env.NODE_ENV === 'production') {
+//   const bruteStore = new BruteRedis({
+//     host: process.env.HOST,
+//     port: process.env.PORT,
+//   });
+//   const bruteForce = new Brute(bruteStore);
+//   routes.post(
+//     '/sessions',
+//     bruteForce.prevent,
+//     SessionStoreValidator,
+//     SessionController.store
+//   );
+// } else {
+//   routes.post('/sessions', SessionStoreValidator, SessionController.store);
+// }
+
+routes.post('/sessions', SessionStoreValidator, SessionController.store);
 
 // Routes Students
 routes.post(
